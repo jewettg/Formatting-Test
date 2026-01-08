@@ -2,19 +2,22 @@
 
 ```mermaid
 flowchart TD
-  A((Start)) --> B[/Input N/]
-  B --> C{Is N > 0?}
-  C -- No --> D[/Output: "N must be positive"/] --> Z((End))
+  A([Start]) --> B[/Input N/]
+  B --> C{N > 0?}
 
-  C -- Yes --> E[Process: i=1, odd_sum=0, even_sum=0]
-  E --> F{Is i <= N?}
-  F -- No --> G[/Output: odd_sum, even_sum/] --> Z((End))
+  C -- No --> D[Output: N must be positive] --> Z([End])
 
-  F -- Yes --> H{Is i even? (i % 2 == 0)}
-  H -- Yes --> I[Process: even_sum += i]
-  H -- No --> J[Process: odd_sum += i]
+  C -- Yes --> E[Init: i=1, odd=0, even=0]
+  E --> F{i <= N?}
 
-  I --> K[Process: i = i + 1]
+  F -- No --> G[Output: odd, even] --> Z
+
+  F -- Yes --> H{Is i even?}
+  H -- Yes --> I[even += i]
+  H -- No  --> J[odd += i]
+
+  I --> K[i += 1]
   J --> K
   K --> F
+
 ```
